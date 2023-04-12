@@ -10,6 +10,7 @@ public class Lab04 {
 
             System.out.println(generateSentence());
 
+
     }
 
     public static StringBuilder generateSentence() {
@@ -39,6 +40,8 @@ public class Lab04 {
 
         randomWord = random.nextInt(nouns.length);
         sentence.append(nouns[randomWord]);
+
+        sentence.append(".");
 
         return sentence;
     }
