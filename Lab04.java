@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Lab04 {
     
         static String[] articles = {"the", "a", "one", "some", "any"};
@@ -13,18 +15,30 @@ public class Lab04 {
     public static StringBuilder generateSentence() {
         
         StringBuilder sentence = new StringBuilder();
+        Random random = new Random();
 
-        sentence.append(articles[0]);
+        int randomWord = random.nextInt(articles.length);
+        sentence.append(articles[randomWord]);
         sentence.append(" ");
-        sentence.append(nouns[0]);
+
+        randomWord = random.nextInt(nouns.length);
+        sentence.append(nouns[randomWord]);
         sentence.append(" ");
-        sentence.append(verbs[0]);
+
+        randomWord = random.nextInt(verbs.length);
+        sentence.append(verbs[randomWord]);
         sentence.append(" ");
-        sentence.append(prepositions[0]);
+
+        randomWord = random.nextInt(prepositions.length);
+        sentence.append(prepositions[randomWord]);
         sentence.append(" ");
-        sentence.append(articles[1]);
+
+        randomWord = random.nextInt(articles.length);
+        sentence.append(articles[randomWord]);
         sentence.append(" ");
-        sentence.append(nouns[1]);
+
+        randomWord = random.nextInt(nouns.length);
+        sentence.append(nouns[randomWord]);
 
         return sentence;
     }
