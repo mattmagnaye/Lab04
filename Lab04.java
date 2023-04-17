@@ -2,6 +2,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Lab04 {
+
+    static Scanner scanner = new Scanner(System.in);
     
     static String[] articles = {"the", "a", "one", "some", "any", "every", "each", "several"};
     static String[] nouns = {"person", "man", "woman", "dog", "cat", "city", "car", "bicycle", "tree", "mountain", "river", "ocean", "sun", "moon"};
@@ -10,7 +12,6 @@ public class Lab04 {
     
     
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
         do {
             int sentenceAmount = 0;
@@ -18,7 +19,7 @@ public class Lab04 {
             while (true) {
                 System.out.println("Pedro and Matt's Sentence Generator using StringBuilder (Lab04)");
                 System.out.println("How many sentences do you want? Between (1-25): ");
-                sentenceAmount = scanner.nextInt();
+                sentenceAmount = getSentencesNumber();
                 if (sentenceAmount >= 1 && sentenceAmount <= 25) {
                     break;
                 }
@@ -35,7 +36,7 @@ public class Lab04 {
             System.out.println(allSentences.toString());
 
             System.out.println("Generate more sentences? (Y/N)");
-        } while (scanner.next().equalsIgnoreCase("Y"));
+        } while ( checkIfWantToContinue(scanner.next()));
     }
 
     public static StringBuilder generateSentence() {
@@ -71,5 +72,32 @@ public class Lab04 {
         sentence.append(".");
 
         return sentence;
+    }
+
+
+    public static boolean checkIfWantToContinue(String input) {
+
+        while(!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n")) {
+            System.out.print("y/n? ");
+            input = scanner.next();
+        }
+        if(input.equalsIgnoreCase("y")) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static int getSentencesNumber () {
+        int sentencesNumber = 0;
+
+        while(!scanner.hasNextInt()) {
+            System.out.print("Please enter a number ");
+            scanner.next();
+        }
+
+        sentencesNumber = scanner.nextInt();
+
+        return sentencesNumber;
     }
 }
