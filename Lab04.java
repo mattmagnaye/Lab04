@@ -1,16 +1,32 @@
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * This is a simple program to generate random sentences and display them to the
+ * user in the console.
+ * The user enters the number of sentences they want and the program generates
+ * the sentences from a predetermined bank of words
+ * 
+ * @author Matt Magnaye and Pedro Orellana
+ * @since 04/18/2023
+ */
+
 public class Lab04 {
 
     static Scanner scanner = new Scanner(System.in);
-    
-    static String[] articles = {"the", "a", "one", "some", "any", "every", "each", "several"};
-    static String[] nouns = {"person", "man", "woman", "dog", "cat", "city", "car", "bicycle", "tree", "mountain", "river", "ocean", "sun", "moon"};
-    static String[] verbs = {"ran", "walked", "jumped", "skipped", "traveled", "drove", "swam", "flew", "climbed", "danced", "sang", "played"};
-    static String[] prepositions = {"to", "from", "over", "under", "on", "by", "for", "away", "towards", "around", "near", "among", "within", "without"};
-    
-    
+
+    static String[] articles = { "the", "a", "one", "some", "any", "every", "each", "several" };
+    static String[] nouns = { "person", "man", "woman", "dog", "cat", "city", "car", "bicycle", "tree", "mountain",
+            "river", "ocean", "sun", "moon" };
+    static String[] verbs = { "ran", "walked", "jumped", "skipped", "traveled", "drove", "swam", "flew", "climbed",
+            "danced", "sang", "played" };
+    static String[] prepositions = { "to", "from", "over", "under", "on", "by", "for", "away", "towards", "around",
+            "near", "among", "within", "without" };
+
+            /**
+             * entry point of the program, where all of the logic is conducted
+             * @param args
+             */
     public static void main(String[] args) {
 
         do {
@@ -30,14 +46,20 @@ public class Lab04 {
 
             for (int i = 0; i < sentenceAmount; i++) {
                 StringBuilder sentence = generateSentence();
-                allSentences.append((i+1) + ". " + sentence + "\n");
+                allSentences.append((i + 1) + ". " + sentence + "\n");
             }
 
             System.out.println(allSentences.toString());
 
             System.out.println("Generate more sentences? (Y/N)");
-        } while ( checkIfWantToContinue(scanner.next()));
+        } while (checkIfWantToContinue(scanner.next()));
     }
+
+
+    /**
+     * This method grabs random words and puts them together to form a sentence
+     * @return A randomly generated sentence, formatted and punctuated
+     */
 
     public static StringBuilder generateSentence() {
         StringBuilder sentence = new StringBuilder();
@@ -74,24 +96,35 @@ public class Lab04 {
         return sentence;
     }
 
-
+    /**
+     * This method is a fail-proof way to get a yes or no answer from the user. If the user enters anything different the method will act accordingly
+     * @param input what the user types when presented with question if they want to continue
+     * @return false for not wanting to continue, true for continuing generating random sentences
+     */
     public static boolean checkIfWantToContinue(String input) {
 
-        while(!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n")) {
+        while (!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n")) {
             System.out.print("y/n? ");
             input = scanner.next();
         }
-        if(input.equalsIgnoreCase("y")) {
+        if (input.equalsIgnoreCase("y")) {
             return true;
         }
 
         return false;
     }
 
-    public static int getSentencesNumber () {
+    /**
+     * This method is a fail-proof way to get the number of sentences the user wants. 
+     * If anything other than a number is entered, the method will act accordingly
+     * 
+     * @return the number of sentences to be created
+     */
+
+    public static int getSentencesNumber() {
         int sentencesNumber = 0;
 
-        while(!scanner.hasNextInt()) {
+        while (!scanner.hasNextInt()) {
             System.out.print("Please enter a number ");
             scanner.next();
         }
