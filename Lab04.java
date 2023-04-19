@@ -53,6 +53,8 @@ public class Lab04 {
 
             System.out.println("Generate more sentences? (Y/N)");
         } while (checkIfWantToContinue(scanner.next()));
+
+        System.out.println("Thank you for using our program, goodbye!");
     }
 
 
@@ -104,7 +106,7 @@ public class Lab04 {
     public static boolean checkIfWantToContinue(String input) {
 
         while (!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n")) {
-            System.out.print("y/n? ");
+            System.out.print("y/n?: ");
             input = scanner.next();
         }
         if (input.equalsIgnoreCase("y")) {
@@ -125,7 +127,7 @@ public class Lab04 {
         int sentencesNumber = 0;
 
         while (!scanner.hasNextInt()) {
-            System.out.print("Please enter a number ");
+            System.out.print("Please enter a number: ");
             scanner.next();
         }
 
